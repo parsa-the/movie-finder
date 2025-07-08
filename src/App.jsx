@@ -1,5 +1,5 @@
 import { use, useEffect, useState } from "react";
-import SearchComp from "./components/search";
+import SearchComp from "./components/Search";
 import Loading from "./components/Loading";
 import ColourfulHeader from "./components/ColourfulHeader";
 import Card from "./components/Card";
