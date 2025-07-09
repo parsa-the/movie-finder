@@ -70,19 +70,19 @@ const App = () => {
   };
   //jsx
   return (
-    <main className="justify-center">
+    <main className="min-h-screen relative bg-gradient-to-br from-[#05000a] to-[#0a0814] justify-center">
       <div className="patterns" />
       <div className="wrapper">
         <header>
-          <img src="./hero.png" alt="Hero banner" />
           <header className="items-center justify-center">
             <ColourfulHeader
               text="Find movies you'll Enjoy Without the Hassle"
-              className="text-5xl mb-8 font-bold font-dm-sans"
-            />
+              className="text-5xl mb-8 font-bold font-dm-sans"/>
           </header>
+         
           <SearchComp searchTerm={search} setSearchTerm={setSearch} />
         </header>
+         
         {trendingMovies.length > 0 && (
           <section className="trending">
             <h2>Trending Movies</h2>
