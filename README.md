@@ -220,3 +220,21 @@ If you have any questions or need help, feel free to:
 ---
 
 **Made with ❤️ using React and Vite**
+
+## 🚀 Performance & SEO Best Practices
+
+- **Explicit Image Sizes:** All images use width and height attributes to prevent layout shifts and improve loading stability.
+- **Production Build:** Always run `npm run build` and serve from the `dist/` folder for minified, optimized JavaScript and CSS.
+- **Text Compression:** For best results, deploy to a host that supports gzip or Brotli compression (e.g., Vercel, Netlify). If self-hosting, enable compression in your server config.
+- **SEO Meta Tags:** The app includes a descriptive `<meta name="description">`, a meaningful `<title>`, and a `<meta name="theme-color">` for better search and mobile experience.
+- **Avoid Layout Shifts:** All major images and containers have explicit sizes. Use compressed and properly sized images for best performance.
+- **Bundle Optimization:** Remove unused dependencies and use code splitting for large or rarely-used components.
+
+**Tip:**
+
+- For best performance, always:
+  - Add `width` and `height` to all `<img>` tags.
+  - Use compressed images (see [Squoosh](https://squoosh.app/)).
+  - Run `npm run build` before deploying.
+
+---
