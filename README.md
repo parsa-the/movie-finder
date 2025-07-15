@@ -10,15 +10,12 @@ A modern, responsive React application that helps you discover and search for mo
 
 - **🔍 Real-time Movie Search**: Search for movies using the TMDB API with instant results
 - **📈 Trending Movies**: Display the most searched movies from your database with horizontal scrolling
-- **🎨 Beautiful UI**: Modern, responsive design with glassmorphism effects and smooth animations
 - **⭐ Movie Ratings**: View movie ratings, release dates, and language information
 - **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **⚡ Fast Performance**: Built with Vite for lightning-fast development and builds
 - **🎭 Animated Components**: Smooth animations using Framer Motion and GSAP
 - **🌈 Colourful Text Animation**: Dynamic purple gradient text with wave-like animations
 - **💾 Search Analytics**: Track and store search patterns using Appwrite backend
-- **🎪 Glassmorphism Design**: Modern glass-like effects on cards and search bar
-
 ## 🛠️ Technologies Used
 
 - **Frontend**: React 19.1.0, Vite 7.0.0
@@ -125,33 +122,7 @@ Movie/
   - Rating (with star icon)
   - Release year
   - Original language
-- Glassmorphism design with backdrop blur
-- Hover animations with lift effect and enhanced shadows
-- Smooth transitions and modern styling
-
 ## 🎨 Key Features Explained
-
-### Colourful Text Animation
-
-The header features a dynamic purple gradient text animation with wave-like effects. Each character animates with:
-
-- Staggered timing (0.08s delay between characters)
-- Color cycling every 2 seconds
-- Smooth transitions with blur and scale effects
-- Beautiful purple gradient palette
-
-### Glassmorphism Design
-
-Modern glass-like effects throughout the app:
-
-- Semi-transparent backgrounds with backdrop blur
-- Subtle borders and shadows
-- Hover animations with enhanced depth
-- Professional and contemporary appearance
-
-### Animated Header
-
-The header uses Framer Motion for smooth text animations that reveal the app's purpose with beautiful effects.
 
 ### Search Analytics
 
@@ -220,21 +191,3 @@ If you have any questions or need help, feel free to:
 ---
 
 **Made with ❤️ using React and Vite**
-
-## 🚀 Performance & SEO Best Practices
-
-- **Explicit Image Sizes:** All images use width and height attributes to prevent layout shifts and improve loading stability.
-- **Production Build:** Always run `npm run build` and serve from the `dist/` folder for minified, optimized JavaScript and CSS.
-- **Text Compression:** For best results, deploy to a host that supports gzip or Brotli compression (e.g., Vercel, Netlify). If self-hosting, enable compression in your server config.
-- **SEO Meta Tags:** The app includes a descriptive `<meta name="description">`, a meaningful `<title>`, and a `<meta name="theme-color">` for better search and mobile experience.
-- **Avoid Layout Shifts:** All major images and containers have explicit sizes. Use compressed and properly sized images for best performance.
-- **Bundle Optimization:** Remove unused dependencies and use code splitting for large or rarely-used components.
-
-**Tip:**
-
-- For best performance, always:
-  - Add `width` and `height` to all `<img>` tags.
-  - Use compressed images (see [Squoosh](https://squoosh.app/)).
-  - Run `npm run build` before deploying.
-
----
