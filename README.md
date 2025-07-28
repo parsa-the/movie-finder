@@ -9,21 +9,11 @@ A modern, responsive React application that helps you discover and search for mo
 ## ✨ Features
 
 - **🔍 Real-time Movie Search**: Search for movies using the TMDB API with instant results
-- **📈 Trending Movies**: Display the most searched movies from your database with horizontal scrolling
 - **⭐ Movie Ratings**: View movie ratings, release dates, and language information
 - **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **⚡ Fast Performance**: Built with Vite for lightning-fast development and builds
 - **🎭 Animated Components**: Smooth animations using Framer Motion and GSAP
-- **🌈 Colourful Text Animation**: Dynamic purple gradient text with wave-like animations
 - **💾 Search Analytics**: Track and store search patterns using Appwrite backend
-## 🛠️ Technologies Used
-
-- **Frontend**: React 19.1.0, Vite 7.0.0
-- **Styling**: Tailwind CSS 4.1.11
-- **Animations**: Framer Motion 12.23.0, GSAP 3.13.0
-- **Backend**: Appwrite (for search analytics)
-- **API**: The Movie Database (TMDB) API
-- **Icons**: Custom SVG icons and star ratings
 
 ## 🚀 Getting Started
 
@@ -75,70 +65,6 @@ A modern, responsive React application that helps you discover and search for mo
 
    Navigate to `http://localhost:5173` to see the application running.
 
-## 📁 Project Structure
-
-```
-Movie/
-├── src/
-│   ├── components/
-│   │   ├── Card.jsx              # Movie card component with glassmorphism
-│   │   ├── Header.jsx            # Original animated header component
-│   │   ├── ColourfulHeader.jsx   # New colourful text header component
-│   │   ├── ColourfulText.jsx     # Animated purple gradient text component
-│   │   ├── Search.jsx            # Search functionality with glassmorphism
-│   │   ├── Loading.jsx           # Loading spinner
-│   │   ├── Bg.jsx               # Background effects
-│   │   └── glare.jsx            # Glare animation effect
-│   ├── App.jsx                  # Main application component
-│   ├── appwrite.js              # Appwrite backend integration
-│   ├── main.jsx                 # Application entry point
-│   └── index.css                # Global styles with modern effects
-├── public/                      # Static assets
-├── package.json                 # Dependencies and scripts
-└── README.md                   # This file
-```
-
-## 🎯 How It Works
-
-### Search Functionality
-
-- Users can search for movies using the search bar
-- Results are fetched from TMDB API in real-time
-- Search queries are stored in Appwrite database for analytics
-
-### Trending Movies
-
-- Displays the top 5 most searched movies
-- Data is retrieved from Appwrite database
-- Shows movie posters and search terms
-- Horizontal scrolling with smooth animations
-- Glassmorphism card design with hover effects
-
-### Movie Cards
-
-- Each movie displays:
-  - Movie poster with shadow effects
-  - Title with text shadow for better readability
-  - Rating (with star icon)
-  - Release year
-  - Original language
-## 🎨 Key Features Explained
-
-### Search Analytics
-
-Every search query is tracked and stored in Appwrite, allowing the app to show trending movies based on user behavior.
-
-### Responsive Design
-
-Built with Tailwind CSS for a fully responsive experience across all device sizes.
-
-### Horizontal Scrolling
-
-Trending movies section features smooth horizontal scrolling with:
-
-- Touch-friendly scrolling on mobile devices
-- Hidden scrollbars for clean appearance
-- Responsive design that works on all screen sizes
 
 ## 📝 Available Scripts
 
