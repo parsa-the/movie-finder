@@ -8,7 +8,7 @@ const TrendingMovies = ({ movies }) => {
       </h2>
 
       <ul
-        className="flex flex-row overflow-x-auto gap-5 -mt-10 w-full pb-4 scroll-smooth snap-x snap-mandatory"
+        className="flex flex-row overflow-x-auto gap-5 mt-10 w-full pb-4 scroll-smooth"
         style={{
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none",
