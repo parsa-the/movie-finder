@@ -69,12 +69,8 @@ const App = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#05000a]/[0.97] to-[#0a0814]/[0.97]">
-      {/* background pattern layer */}
       <div className="absolute inset-0 bg-center bg-cover z-0" />
-
-      {/* main content wrapper */}
       <main className="relative z-10 flex-1 max-w-7xl mx-auto px-5 py-12 xs:p-10 flex flex-col w-full">
-        {/* header section */}
         <header className="text-center flex flex-col items-center mt-5 sm:mt-10">
           <ColourfulHeader
             text="Find movies you'll Enjoy Without the Hassle"
@@ -82,8 +78,6 @@ const App = () => {
           />
           <SearchComp searchTerm={search} setSearchTerm={setSearch} />
         </header>
-
-        {/* sections */}
         <TrendingMovies movies={trendingMovies} />
         <MoviesList
           movies={movieList}
@@ -91,8 +85,6 @@ const App = () => {
           errorMessage={errorMessage}
         />
       </main>
-
-      {/* footer sticks to bottom */}
       <Footer />
     </div>
   );

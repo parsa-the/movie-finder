@@ -12,7 +12,7 @@ const SearchComp = ({ searchTerm, setSearchTerm, onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center justify-between gap-3 bg-gradient-to-r from-purple-600/30 to-blue-500/30 p-3 rounded-2xl shadow-md backdrop-blur-md border border-white/10 w-full max-w-2xl mx-auto mt-6"
+      className="flex items-center mb-90 justify-between gap-3 border-violet-700/50  p-3 rounded-2xl shadow-md backdrop-blur-md border  w-full max-w-2xl mx-auto mt-6"
     >
       <img
         src="./search-icon.svg"
@@ -30,7 +30,7 @@ const SearchComp = ({ searchTerm, setSearchTerm, onSubmit }) => {
 
       <button
         type="submit"
-        className="text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
+        className="text-white font-semibold bg-violet-600/50 hover:bg-indigo-700 px-5 py-2 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
       >
         Search
       </button>

@@ -4,7 +4,7 @@ import Card from "./Card";
 const MoviesList = ({ movies, isLoading, errorMessage }) => {
   return (
     <section className="px-6 py-10 text-gray-100">
-      <h2 className="text-3xl font-semibold mb-6 text-center">All Movies</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center">All Movies</h2>
 
       {isLoading ? (
         <div className="flex justify-center items-center py-10">
