@@ -99,7 +99,7 @@ const Home = () => {
 
       <main className="relative z-10 flex-1 max-w-7xl mx-auto px-5 py-12 xs:p-10 flex flex-col w-full">
         <header className="text-center flex flex-col items-center mt-5 sm:mt-10">
-          <h1 className="text-white font-extrabold text-5xl sm:text-6xl sm:w-[42rem] mb-5 text-center leading-tight">
+          <h1 className="text-white  font-extrabold text-5xl sm:text-6xl sm:w-[50rem] mb-5 text-center leading-21">
             Find{" "}
             <span className="relative p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 font-bebas tracking-wide">
               <span className="bg-gradient-to-t from-violet-400 to-purple-400 bg-clip-text text-transparent">
@@ -109,7 +109,7 @@ const Home = () => {
             you'll Enjoy Without the Hassle
           </h1>
 
-          <p className="text-zinc-400 text-md mb-10 sm:w-[38rem] leading-relaxed">
+          <p className="text-zinc-400 text-md mb-10 sm:w-[28rem]  ">
             See the newest and most popular movies from the most complete movie
             database!
           </p>

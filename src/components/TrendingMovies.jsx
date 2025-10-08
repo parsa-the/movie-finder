@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TrendingMovies = ({ movies }) => {
   if (!movies || movies.length === 0) return null;
 
@@ -8,7 +10,7 @@ const TrendingMovies = ({ movies }) => {
       </h2>
 
       <ul
-        className="flex flex-row overflow-x-auto gap-5 mt-10 w-full pb-4 scroll-smooth"
+        className="flex flex-row overflow-x-auto gap-5 mt-10 w-full pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden"
         style={{
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none",
@@ -28,11 +30,14 @@ const TrendingMovies = ({ movies }) => {
             >
               {index + 1}
             </p>
-            <img
-              src={movie.poster_url}
-              alt={movie.searchTerm}
-              className="w-[170px] h-[220px] rounded-lg object-cover -ml-3.5 shadow-[0_2px_12px_rgba(40,60,120,0.12)] transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-[0_6px_24px_rgba(80,120,255,0.22)] z-[1]"
-            />
+
+            <Link to={`/movie/${movie.movie_id || movie.id}`} className="z-[1]">
+              <img
+                src={movie.poster_url}
+                alt={movie.searchTerm}
+                className="w-[170px] h-[220px] rounded-lg object-cover -ml-3.5 shadow-[0_2px_12px_rgba(40,60,120,0.12)] transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-[0_6px_24px_rgba(80,120,255,0.22)]"
+              />
+            </Link>
           </li>
         ))}
       </ul>

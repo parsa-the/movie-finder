@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 
 const Card = ({
-  Movie: { id, title, vote_average, poster_path, release_date, original_language },
+  Movie: {
+    id,
+    title,
+    vote_average,
+    poster_path,
+    release_date,
+    original_language,
+  },
 }) => {
   return (
     <Link to={`/movie/${id}`}>

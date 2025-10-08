@@ -112,7 +112,6 @@ const MovieDetails = () => {
             <p>Language: {movie.original_language?.toUpperCase() ?? "—"}</p>
           </div>
 
-          {/* Genres */}
           <div className="mt-4 flex flex-wrap gap-2">
             {movie.genres?.map((genre, i) => (
               <motion.span
