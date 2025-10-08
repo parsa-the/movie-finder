@@ -23,7 +23,6 @@ export const updatesearchcount = async (search, movie) => {
         count: updatedCount,
       });
     } else {
-      // Create a new document if no existing document is found
       await databases.createDocument(DATABASE_ID, COLLECTION_ID, "unique()", {
         searchTerm: search,
         count: 1,
