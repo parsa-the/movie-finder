@@ -1,13 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
 import { motion } from "framer-motion";
+import Loading from "../components/Loading";
 
 const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
+
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
@@ -91,7 +93,7 @@ const MovieDetails = () => {
             </motion.p>
           )}
 
-          <motion.div className="w-16 h-0.5 bg-white rounded-2xl mb-6"></motion.div>
+          <motion.div className="w-16 h-0.5 bg-white rounded-2xl mb-6" />
 
           <motion.p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
             {movie.overview}
@@ -104,9 +106,7 @@ const MovieDetails = () => {
             <p>
               Release:{" "}
               {movie.release_date
-                ? `${movie.release_date.split("-")[0]}/${
-                    movie.release_date.split("-")[1]
-                  }`
+                ? `${movie.release_date.split("-")[0]}/${movie.release_date.split("-")[1]}`
                 : "—"}
             </p>
             <p>Language: {movie.original_language?.toUpperCase() ?? "—"}</p>
@@ -129,16 +129,19 @@ const MovieDetails = () => {
       </div>
 
       <div className="max-w-5xl w-full mt-35">
-        <h2 className="text-3xl font-bold  text-white mb-13">Reviews</h2>
+        <h2 className="text-3xl font-bold text-white mb-13">Reviews</h2>
+
         {reviews.length === 0 ? (
           <p className="text-zinc-400">No reviews yet.</p>
         ) : (
           reviews.map((review) => (
             <div
               key={review.id}
-              className="mb-8 border  border-zinc-500 p-3 bg-[rgba(0,0,0,0.3)] rounded-lg"
+              className="mb-8 border border-zinc-500 p-3 bg-[rgba(0,0,0,0.3)] rounded-lg"
             >
-              <p className="font-bold mb-5 m-1 text-lg text-violet-300">{review.author}</p>
+              <p className="font-bold mb-5 m-1 text-lg text-violet-300">
+                {review.author}
+              </p>
               <p className="text-zinc-300">{review.content}</p>
             </div>
           ))

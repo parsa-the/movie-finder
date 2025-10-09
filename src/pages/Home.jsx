@@ -1,88 +1,92 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import SearchComp from "../components/Search";
-import { getTrendingMovies, updatesearchcount } from "../appwrite";
 import TrendingMovies from "../components/TrendingMovies";
 import MoviesList from "../components/MoviesList";
 import Footer from "../components/Footer";
 import DarkVeil from "../components/Background";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Loading from "../components/Loading";
+
+import { getTrendingMovies, updatesearchcount } from "../appwrite";
 
 const Home = () => {
   const API_BASE_URL = "https://api.themoviedb.org/3";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-  const API_OPTIONS = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${API_KEY}`,
-    },
-  };
-
-  const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
   const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     toast.info("If you are from Iran, please turn on your VPN!");
   }, []);
 
   useEffect(() => {
-    fetchMovies(search);
-  }, [search]);
+    const fetchMovies = async () => {
+      setIsLoading(true);
+      setErrorMessage("");
+
+      try {
+        const endpoint = search
+          ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(search)}`
+          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+
+        const res = await fetch(endpoint, {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch data from TMDB");
+
+        const data = await res.json();
+        if (!data.results) throw new Error("No movies found");
+
+        setMovieList(data.results);
+
+        if (search && data.results.length > 0) {
+          await updatesearchcount(search, data.results[0]);
+        }
+      } catch (err) {
+        const msg = `Error fetching movies: ${err.message}`;
+        console.error(msg);
+        toast.error(msg);
+        setErrorMessage(msg);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, [search, API_BASE_URL, API_KEY]);
 
   useEffect(() => {
+    const fetchTrendingMovies = async () => {
+      try {
+        const movies = await getTrendingMovies();
+        setTrendingMovies(movies);
+      } catch (err) {
+        const msg = `Error fetching trending movies: ${err.message}`;
+        console.error(msg);
+        toast.error(msg);
+        setErrorMessage(msg);
+      }
+    };
+
     fetchTrendingMovies();
   }, []);
 
-  const fetchMovies = async (query = "") => {
-    setIsLoading(true);
-    setErrorMessage("");
-
-    try {
-      const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
-
-      const res = await fetch(endpoint, API_OPTIONS);
-      if (!res.ok) throw new Error("Failed to fetch data from TMDB");
-
-      const data = await res.json();
-      if (!data.results) throw new Error("No movies found");
-
-      setMovieList(data.results || []);
-
-      if (query && data.results.length > 0) {
-        await updatesearchcount(query, data.results[0]);
-      }
-    } catch (err) {
-      const msg = `Error fetching movies: ${err.message}`;
-      console.error(msg);
-      toast.error(msg);
-      setErrorMessage(msg);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const fetchTrendingMovies = async () => {
-    try {
-      const movies = await getTrendingMovies();
-      setTrendingMovies(movies);
-    } catch (err) {
-      const msg = `Error fetching trending movies: ${err.message}`;
-      console.error(msg);
-      toast.error(msg);
-      setErrorMessage(msg);
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#05000a]/95 to-[#0a0814]/95 relative">
-      <div className="absolute top-0 left-0 right-0 h-[600px] z-0">
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <div className="min-h-screen flex flex-col bg-black relative">
+      <div className="absolute top-0 left-0 right-0 h-[400px] sm:h-[500px] md:h-[600px] z-0">
         <DarkVeil className="w-full h-full" />
       </div>
 
@@ -97,9 +101,9 @@ const Home = () => {
         theme="dark"
       />
 
-      <main className="relative z-10 flex-1 max-w-7xl mx-auto px-5 py-12 xs:p-10 flex flex-col w-full">
+      <main className="relative z-10 flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 flex flex-col w-full">
         <header className="text-center flex flex-col items-center mt-5 sm:mt-10">
-          <h1 className="text-white  font-extrabold text-5xl sm:text-6xl sm:w-[50rem] mb-5 text-center leading-21">
+          <h1 className="text-white font-extrabold text-3xl sm:text-5xl md:text-6xl max-w-xl sm:max-w-3xl md:max-w-5xl mb-5 text-center leading-tight sm:leading-snug">
             Find{" "}
             <span className="relative p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 font-bebas tracking-wide">
               <span className="bg-gradient-to-t from-violet-400 to-purple-400 bg-clip-text text-transparent">
@@ -109,7 +113,7 @@ const Home = () => {
             you'll Enjoy Without the Hassle
           </h1>
 
-          <p className="text-zinc-400 text-md mb-10 sm:w-[28rem]  ">
+          <p className="text-zinc-400 text-sm sm:text-md md:text-lg mb-8 sm:mb-10 max-w-xs sm:max-w-md md:max-w-lg">
             See the newest and most popular movies from the most complete movie
             database!
           </p>
@@ -117,12 +121,17 @@ const Home = () => {
           <SearchComp searchTerm={search} setSearchTerm={setSearch} />
         </header>
 
-        <TrendingMovies movies={trendingMovies} />
-        <MoviesList
-          movies={movieList}
-          isLoading={isLoading}
-          errorMessage={errorMessage}
-        />
+        <div className="mt-10 sm:mt-12">
+          <TrendingMovies movies={trendingMovies} />
+        </div>
+
+        <div className="mt-12 sm:mt-16">
+          <MoviesList
+            movies={movieList}
+            isLoading={isLoading}
+            errorMessage={errorMessage}
+          />
+        </div>
       </main>
 
       <Footer />

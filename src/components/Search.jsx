@@ -12,7 +12,7 @@ const SearchComp = ({ searchTerm, setSearchTerm, onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center mb-45 justify-between gap-3 border-violet-700/50  p-3 rounded-2xl shadow-md backdrop-blur-md border  w-full max-w-2xl mx-auto mt-6"
+      className="flex items-center mb-45 justify-between gap-3 border-violet-700/50  p-3 rounded-2xl shadow-md backdrop-blur-md border-b border-t  w-full max-w-2xl mx-auto mt-6"
     >
       <img
         src="./search-icon.svg"

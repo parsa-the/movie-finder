@@ -36,11 +36,10 @@ const Card = ({
               <p className="text-white font-bold text-base">
                 {vote_average?.toFixed(1) ?? "N/A"}
               </p>
-              <span className="text-gray-100 text-sm">.</span>
-              <p className="capitalize text-gray-100 font-medium text-base">
+              <span className="text-violet-400 text-sm mr-1 ml-1 "> | </span>              <p className="capitalize text-gray-100 font-medium text-base">
                 {original_language || "—"}
               </p>
-              <span className="text-gray-100 text-sm">.</span>
+              <span className="text-violet-400 text-sm mr-1 ml-1 "> | </span>
               <p className="text-gray-100 font-medium text-base">
                 {release_date ? release_date.split("-")[0] : "—"}
               </p>
