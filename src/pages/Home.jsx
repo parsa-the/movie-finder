@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import SearchComp from "../components/Search";
 import TrendingMovies from "../components/TrendingMovies";
 import MoviesList from "../components/MoviesList";
 import Footer from "../components/Footer";
 import DarkVeil from "../components/Background";
 import Loading from "../components/Loading";
-
+import { motion } from "framer-motion";
 import { getTrendingMovies, updatesearchcount } from "../appwrite";
 
 const Home = () => {
@@ -20,7 +19,7 @@ const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [page, setPage] = useState(1);
   useEffect(() => {
     toast.info("If you are from Iran, please turn on your VPN!");
   }, []);
@@ -33,7 +32,7 @@ const Home = () => {
       try {
         const endpoint = search
           ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(search)}`
-          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&page=${page}`;
 
         const res = await fetch(endpoint, {
           method: "GET",
@@ -64,7 +63,7 @@ const Home = () => {
     };
 
     fetchMovies();
-  }, [search, API_BASE_URL, API_KEY]);
+  }, [search, API_BASE_URL, API_KEY, page]);
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -81,7 +80,12 @@ const Home = () => {
 
     fetchTrendingMovies();
   }, []);
-
+  function nexPage() {
+    setPage((prev) => prev + 1);
+  }
+  function previousPage() {
+    setPage((prev) => Math.max(prev - 1, 1));
+  }
   return isLoading ? (
     <Loading />
   ) : (
@@ -130,7 +134,30 @@ const Home = () => {
             movies={movieList}
             isLoading={isLoading}
             errorMessage={errorMessage}
-          />
+          />{" "}
+          {!search && (
+            <div className="text-white mt-20 items-center mb-10 flex space-x-13 justify-center">
+              <motion.button
+                whileHover={{ scale: 0.93, boxShadow: "0px 3px 180px white" }}
+                className="bg-violet-600 w-22 p-2 rounded-lg shadow-md border-l-3 border-t-2 font-semibold border-violet-900 border"
+                onClick={previousPage}
+                disabled={page === 1 || isLoading}
+              >
+                previous
+              </motion.button>
+              <motion.span initial={{ textShadow: "0px 0px 20px white" }}>
+                page {page}
+              </motion.span>
+              <motion.button
+                whileHover={{ scale: 0.93, boxShadow: "0px 3px 180px white" }}
+                onClick={nexPage}
+                disabled={isLoading}
+                className="bg-violet-600 w-22 p-2 rounded-lg shadow-md border-r-3 border-t-2 font-semibold border-violet-900 border"
+              >
+                next
+              </motion.button>
+            </div>
+          )}
         </div>
       </main>
 
