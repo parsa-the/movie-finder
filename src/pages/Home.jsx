@@ -136,7 +136,7 @@ const Home = () => {
             errorMessage={errorMessage}
           />{" "}
           {!search && (
-            <div className="text-white mt-20 items-center mb-10 flex space-x-13 justify-center">
+            <div className="text-white mt-20 items-center mb-10 flex space-x-7 sm:space-x-13 justify-center">
               <motion.button
                 whileHover={{ scale: 0.93, boxShadow: "0px 3px 180px white" }}
                 className="bg-violet-600 w-22 p-2 rounded-lg shadow-md border-l-3 border-t-2 font-semibold border-violet-900 border"
