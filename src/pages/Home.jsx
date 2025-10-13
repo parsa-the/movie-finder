@@ -107,7 +107,7 @@ const Home = () => {
 
       <main className="relative z-10 flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 flex flex-col w-full">
         <header className="text-center flex flex-col items-center mt-5 sm:mt-10">
-          <h1 className="text-white font-extrabold text-3xl sm:text-5xl md:text-6xl max-w-xl sm:max-w-3xl md:max-w-5xl mb-5 text-center leading-tight sm:leading-snug">
+          <h1 className="text-white font-extrabold text-4xl sm:text-5xl md:text-6xl max-w-xl sm:max-w-3xl md:max-w-5xl mb-5 text-center leading-relaxed  sm:leading-snug">
             Find{" "}
             <span className="relative p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 font-bebas tracking-wide">
               <span className="bg-gradient-to-t from-violet-400 to-purple-400 bg-clip-text text-transparent">
