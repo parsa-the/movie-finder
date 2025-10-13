@@ -6,17 +6,19 @@
 -  Fast Performance
 -  Animated Components
 -  Search Analytics
-
+-  routing
+-  framer Motion
 ##  Getting Started
 
 ### What i used:
 
+- react router dom
 - Node.js (version 16 or higher)
 - npm or yarn package manager
 - TMDB API key
 - Appwrite account (for search analytics)
-
-
+- pagination 
+- beautiful animations 
 ----------
 - **Environment Setup**
 
@@ -46,6 +48,3 @@ For search analytics, configure Appwrite:
 - Add the necessary environment variables
 - The collection should have fields: `searchTerm`, `count`, `movie_id`, `poster_url`
 
----
-
-**Made with ❤️ using React and Vite**
